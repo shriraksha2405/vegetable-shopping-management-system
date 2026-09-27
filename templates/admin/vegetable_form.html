@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block content %}
+<div class="formbox wide">
+  <h2>{{ "Edit" if veg else "Add" }} Vegetable</h2>
+  <form method="post" enctype="multipart/form-data">
+    <input name="name" value="{{veg.name if veg else ''}}" placeholder="Vegetable name" required>
+    <input name="category" value="{{veg.category if veg else ''}}" placeholder="Category" required>
+    <input type="number" step="0.01" min="0" name="price" value="{{veg.price if veg else ''}}" placeholder="Price/kg" required>
+    <input type="number" step="0.5" min="0" name="stock" value="{{veg.stock if veg else ''}}" placeholder="Stock kg" required>
+
+    {% if veg and veg.image %}
+      <div class="image-preview">
+        <p><strong>Current image</strong></p>
+        <img src="{{ url_for('static', filename='images/' + veg.image) }}" alt="{{ veg.name }}">
+      </div>
+    {% endif %}
+
+    <label for="image"><strong>{{ "Replace vegetable image" if veg else "Vegetable image" }}</strong></label>
+    <input id="image" type="file" name="image" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml" {% if not veg %}required{% endif %}>
+    <small>Allowed: PNG, JPG, JPEG, GIF, WEBP, SVG.</small>
+    {% if veg %}<small>Leave this empty to keep the current image.</small>{% endif %}
+
+    <textarea name="description" placeholder="Description">{{veg.description if veg else ''}}</textarea>
+    <button type="submit">{{ "Update Vegetable" if veg else "Add Vegetable" }}</button>
+  </form>
+</div>
+{% endblock %}

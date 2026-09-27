@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<div class="formbox">
+  <h2>Create New Admin</h2>
+  <form method="post">
+    <input name="name" placeholder="Admin name" required>
+    <input type="email" name="email" placeholder="admin@gmail.com" pattern="[A-Za-z0-9._%+-]+@gmail\.com" title="Enter a valid Gmail address ending with @gmail.com" required>
+    <input type="password" name="password" placeholder="Password (minimum 8 characters)" minlength="8" required>
+    <button type="submit">Create Admin</button>
+  </form>
+  <small>Only Gmail addresses ending in @gmail.com are accepted.</small>
+</div>
+{% endblock %}

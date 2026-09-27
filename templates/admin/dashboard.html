@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h2>Admin Dashboard</h2><div class="stats"><div>Vegetables<h2>{{stats.vegetables}}</h2></div><div>Customers<h2>{{stats.users}}</h2></div><div>Orders<h2>{{stats.orders}}</h2></div><div>Paid Revenue<h2>₹{{'%.2f'|format(stats.revenue)}}</h2></div></div>{% endblock %}
